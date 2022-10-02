@@ -1,0 +1,67 @@
+<html>
+<head>
+    <style>
+        .eye {
+            margin-left: -200px;
+        }
+        .statement-area {
+
+        }
+        .statement-at-front #scene {
+            width: 100vw;
+            height: 100vh;
+        }
+
+    </style>
+</head>
+<body class="eye">
+    <div class="statement-area">
+        <div class="statement-at-front">
+            <div class="isometric">
+                <div class="from-bottom-projection">
+                    <canvas id="scene"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--    <script src="core-lib/js/viewported-knot-at-knot-labirint/draft-handle.js"></script>-->
+    <script src="core-lib/js/viewported-knot-at-knot-labirint/draft-compact-at-bounced.js"></script>
+    <script src="core-lib/js/viewported-knot-at-knot-labirint/draft-at-bounced.js"></script>
+    <script src="core-lib/js/viewported-knot-at-knot-labirint/handle-at-bounced.js"></script>
+
+    <script src="core-lib/js/viewported-knot-at-knot-labirint/draft-compact.js"></script>
+    <script src="core-lib/js/viewported-knot-at-knot-labirint/viewported-knot-at-protected-scene.js"></script>
+    <script src="core-lib/js/viewported-knot-at-knot-labirint/viewported-knot-at-protected-viewport.js"></script>
+    <script src="core-lib/js/viewported-knot-at-knot-labirint/viewported-knot-at-pub.js"></script>
+
+    <script>
+        // keep
+        let pencil = new Pencil()
+        let sceneWalkingAroundLabirintAtStart = new SceneWalkingAroundLabirintAtStart()
+
+        let draftFabrikk = new DraftFabrikk()
+
+        let bottomStatement = draftFabrikk.constructBottomStatement()
+
+        pencil.rememberSample(sceneWalkingAroundLabirintAtStart, new KnotFromCubicProject())
+        pencil.useScene(sceneWalkingAroundLabirintAtStart)
+
+        // keep
+        let knotFromCubicProject = pencil.constructKnot()
+
+        draftFabrikk.connectKnotToBottomStatement(bottomStatement, knotFromCubicProject)
+
+        // keep
+        pencil.provideScene().putKnotConnectedToBottomStatement(knotFromCubicProject)
+
+        // keep
+        let viewportPointerBelongings = draftFabrikk.constructViewport()
+        pencil.useViewport(viewportPointerBelongings.atVerticalPosition, viewportPointerBelongings.atDistance, viewportPointerBelongings.atHorizontalPosition)
+
+        pencil.draw()
+        // keep
+
+    </script>
+</body>
+</html>
